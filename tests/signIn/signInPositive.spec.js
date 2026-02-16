@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { SignInPage } from '../../src/pages/SignInPage';
 import { HomePage } from '../../src/pages/HomePage';
+import config from '../../config.json';
 
 let signInPage;
 let homePage;
@@ -11,8 +12,8 @@ test.beforeEach(async ({ page }) => {
   homePage = new HomePage(page);
 
   user = {
-    email: 'test_new_user@gmail.com',
-    password: 'newpass123!',
+    email: config.user_email,
+    password: config.password,
   };
 });
 

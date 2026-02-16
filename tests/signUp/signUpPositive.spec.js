@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
-import { faker } from '@faker-js/faker';
 import { SignUpPage } from '../../src/pages/SignUpPage';
 import { HomePage } from '../../src/pages/HomePage';
+import config from '../../config.json';
 
 let signUpPage;
 let homePage;
@@ -12,9 +12,9 @@ test.beforeEach(async ({ page }) => {
   homePage = new HomePage(page);
 
   user = {
-    username: `${faker.person.firstName()}_${faker.person.lastName()}`,
-    email: faker.internet.email(),
-    password: faker.internet.password(),
+    username: config.user,
+    email: config.user_email,
+    password: config.password,
   };
 });
 
