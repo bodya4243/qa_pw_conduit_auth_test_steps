@@ -11,7 +11,9 @@ export class SignUpPage {
   }
 
   async open() {
-    await this.page.goto('/user/register');
+    await test.step('Open Sign Up page', async () => {
+      await this.page.goto('/user/register');
+    });
   }
 
   async fillUsernameField(username) {
