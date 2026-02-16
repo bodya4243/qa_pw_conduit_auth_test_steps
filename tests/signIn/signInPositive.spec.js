@@ -1,7 +1,6 @@
 import { test } from '@playwright/test';
 import { SignInPage } from '../../src/pages/SignInPage';
 import { HomePage } from '../../src/pages/HomePage';
-import config from '../../config.json';
 
 let signInPage;
 let homePage;
@@ -12,14 +11,15 @@ test.beforeEach(async ({ page }) => {
   homePage = new HomePage(page);
 
   user = {
-    email: config.user_email,
-    password: config.password,
+    user: process.env.USER_NAME,
+    email: process.env.USER_EMAIL,
+    password: process.env.USER_PASSWORD,
   };
 });
 
 test('Successful `Sign in` flow test', async () => {
   await signInPage.open();
-  await signInPage.fillEmailField(user.email);
+  await signInPage.fillEmailField(user.user);
   await signInPage.fillPasswordField(user.password);
   await signInPage.clickSignInButton();
 
